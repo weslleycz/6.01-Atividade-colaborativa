@@ -1,0 +1,14 @@
+<%- include('header') %>
+<div class="card text-center">
+  <div class="card-header">
+    <%= detailing[0].title %>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> <%= detailing[0].content %></h5>
+    <a href="/" class="btn btn-primary">Voltar</a>
+  </div>
+  <div class="card-footer text-muted">
+    <%= detailing[0].published %>
+  </div>
+</div>
+<%- include('footer') %>

@@ -1,0 +1,46 @@
+<%- include('header') %>
+    <% if (entries.length) { %>
+            <% for (var i = 0; i < entries.length; i++) { %>
+            <div class="card mt-2">
+                <div class="card-header">
+                    <div class="text-muted float-end">
+                        <%= entries[i].published %>
+                    </div>
+                    <%= entries[i].title %>
+                </div>
+                <div class="card-body">
+                    <div class="container">
+                        <div class="row" width="90%">
+                            <div class="col-8"
+                            >
+                            <%= entries[i].content %>
+                            </div>
+                            <div class="col-2 col-sm-4">
+                                <button class="btn btn-primary" 
+                                onclick="fetchDetailing(<%=i%>)"
+                                 type="button">Detalhamento</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                  </div>
+            </div>
+        <% } %>
+        <div class="text-end mt-2">
+            <%= entries.length > 1 ?
+                entries.length + msg[1] : entries.length + msg[0] %>
+                uma mensagem! <3
+        </div>
+    </div>
+    <% } else { %>
+       Sem mensagens! <a href="/new-entry">Adicione uma!</a>
+    <% } %>
+<%- include('footer') %>
+<script>
+   async function fetchDetailing(data){
+        axios.get(`http://localhost:3000/detailingset/${data}`)
+.then(response => console.log(response));
+        window.location.href = "/detailing";
+    }
+</script>
